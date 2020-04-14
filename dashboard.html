@@ -1,0 +1,1372 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Covid-19</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.2.1/css/ol.css">
+    <link rel="stylesheet" href="Src/ol-layerswitcher.css" />
+    <link rel="stylesheet" href="Src/layerswitcher.css" />
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  
+  <style> 
+.panel-fullscreen {
+display: inline-block;
+z-index: 9999;
+position: fixed;
+width: 100%;
+height:100%;
+top: 0;
+right: 0;
+left: 0;
+bottom: 30px;
+overflow: auto;
+}
+
+
+#rcorners2 {
+  border-radius: 10px;
+ 
+}
+.btn{
+color: white;
+}
+.btn:hover{
+color:#C0C0C0;
+}
+#grad4 {
+  height: auto; 
+  background-image: linear-gradient(to right, rgba(255, 198, 240,3),rgba(255,0,0,0), rgba(109, 32, 119,1));
+  
+}
+.ol-custom-overviewmap,
+.ol-custom-overviewmap.ol-uncollapsible {
+  bottom: 0;
+  left: auto;
+  right: 0;
+  top: auto;
+}
+
+.ol-custom-overviewmap:not(.ol-collapsed)  {
+  border: 1px solid black;
+}
+
+.ol-custom-overviewmap .ol-overviewmap-map {
+  border: none;
+  width: 100px;
+  height:100px;
+}
+
+.ol-custom-overviewmap .ol-overviewmap-box {
+  border: 2px solid red;
+}
+
+.ol-custom-overviewmap:not(.ol-collapsed) button{
+  bottom: 1px;
+  left: auto;
+  right: 1px;
+  top: auto;
+}
+
+.ol-rotate {
+  top: 170px;
+  right: 0;
+}
+</style>
+</head>
+<body class="hold-transition sidebar-mini sidebar-collapse">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light" id="grad4">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+      </li>
+
+      <li>
+        <h1><a href="dashboard.html" class="text-lg" style="color:#6d2077">Covid-19 Dashboard</a></h1>
+      </li>
+    </ul>
+
+
+    <!-- SEARCH FORM -->
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <ion-icon name="chatbubbles-outline" size="large" style="color: white";></ion-icon>
+          <span class="badge badge-danger navbar-badge">2</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Dr.Sachin Pawar
+                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">Need Testing Kit in Mumbai Hospital...</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Dr. Rajesh 
+                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">2 patient recovered</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+           
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+        </div>
+      </li>
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <ion-icon name="notifications-outline" size="large" style="color: white";></ion-icon>
+          <span class="badge badge-warning navbar-badge">2</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">2 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 2 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 New cases in Mumbai
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          
+      </li>
+    </ul>
+  </nav>
+   <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-light-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="home.html" class="brand-link">
+      <img src="images/logo.png" alt="Covid-19" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">Covid-19 Dashboard</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="index.php" class="d-block">Logout</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Home
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./home.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./dashboard.html" class="nav-link active">
+                  <i class="nav-icon fas fa-chart-pie"></i>
+                  <p>Analytics</p>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a href="./pcmc.html" class="nav-link">
+                  <i class="nav-icon fas fa-book"></i>
+                  <p>Pune</p>
+                </a>
+              </li>
+			  
+			  <li class="nav-item">
+                <a href="./mumbai.html" class="nav-link">
+                  <i class="nav-icon fas fa-book"></i>
+                  <p>MUMBAI</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+	          <div class="row mb-8">
+          <div class="col-sm-3">
+            <h1 class="m-0 text-dark" id ="location">Maharashtra</h1>
+          </div> 
+		  <!--<div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-5">
+                <div class="form-group">
+				<form name="myform">
+                  <label>District</label>
+                  <select class="form-control select2" style="width: 100%;" name="mylist" onChange="nav()">
+				  <option value="None" selected="selected">Select District</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Navi Mumbai" >Navi Mumbai</option>
+                    <option value="pune">Pune</option>
+                    <option value="sangli">Sangli</option>
+                    <option value="Kolhapur">Kolhapur</option>
+                    <option value="Solapur">Solapur</option>
+                    <option value="Ratnagiri">Ratnagiri</option>
+                  </select>
+                </div>
+				</form>
+				</div>
+                <!-- /.form-group 
+				<div class="col-sm-5">
+				<form name="myform1">
+                  <label>City</label>
+                  <select class="form-control select2" style="width: 100%;" name="mylist" onChange="nav1()">
+				  <option value="None" selected="selected">Select City</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Navi Mumbai" >Navi Mumbai</option>
+                    <option value="pune">Pune</option>
+                    <option value="sangli">Sangli</option>
+                    <option value="Kolhapur">Kolhapur</option>
+                    <option value="Solapur">Solapur</option>
+                    <option value="Ratnagiri">Ratnagiri</option>
+                  </select>
+                </div>
+				</form>-->
+                <!-- /.form-group -->
+              <!-- /.col -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+        <!-- Small boxes (Stat box) -->
+		<div class="table-responsive">
+		<table class="table table-borderless text-center" style="border-spacing: 5px;   border-collapse: separate;">
+		<tr>
+                    <th>Confirmed </th>
+                    <th>Hospitalized </th>
+                    <th>Recovered </th>
+                    <th>Deceased </th>
+                    <th>Home Quarantine</th>
+					<th>Tested </th>
+                    <th>Scanned </th>
+                    <th>Medical Facility</th>
+        </tr>
+
+	
+		<tr>
+					<td bgcolor="#00338d" id="rcorners2">
+                      <button type="button" Style ="font-size:20px;" class="btn btn-block btn-flat" onclick="confirmed()" id="confirmed">181 [+25]</button>
+                    </td>
+					<td bgcolor="#eaaa00" id="rcorners2">
+                      <button type="button" Style ="font-size:20px;" class="btn btn-block btn-flat" onclick="Hospitalized()" id="Hospitalized">177 [+25]</button>
+                    </td>
+					<td bgcolor="#43b02a" id="rcorners2">
+                      <button type="button" Style ="font-size:20px;" class="btn btn-block btn-flat" onclick="Recovered()" id="Recovered">2 [0]</button>
+                    </td>
+					<td bgcolor="#ff0000" id="rcorners2">
+                      <button type="button" Style ="font-size:20px;" class="btn btn-block btn-flat" onclick="Deceased()" id="Deceased">2 [0]</button>
+                    </td>
+					<td bgcolor="#9b642e" id="rcorners2">
+                      <button type="button" class="btn btn-block btn-flat" onclick="Home_Quarantine()">Data Awaited</button>
+                    </td>
+					<td bgcolor="#00b0f0" id="rcorners2">
+                      <button type="button" class="btn btn-block btn-flat" onclick="Tested()">Data Awaited</button>
+                    </td>
+					<td bgcolor="#00a3a1" id="rcorners2">
+                      <button type="button" class="btn btn-block btn-flat" onclick="Scanned()">Data Awaited</button>
+                    </td>
+					<td bgcolor="#c00000" id="rcorners2">
+                      <button type="button" class="btn btn-block btn-flat" onclick="MF()">Data Awaited</button>
+                    </td>
+		</tr>
+		
+		</table>
+		</div>
+       
+       
+	
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+		  
+		   <!-- BAR CHART -->
+            <div class="card card-success">
+              <div class="card-header" Style="background-color:#a233b0">
+                <h3 class="card-title">Cases of Covid</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+				  <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
+				  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 500px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+			
+            <!-- AREA CHART -->
+            <div class="card card-danger" >
+              <div class="card-header" Style="background-color:#a233b0">
+                <h3 class="card-title">Bed & Ward Availability*</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+				  <button type="button" class="btn btn-tool " data-card-widget="maximize"><i class="fas fa-expand"></i>
+				  </button>
+                </div>
+              </div>
+              <div class="card-body" Style="max-height=">
+                <div class="chart">
+                  <canvas id="areaChart" style="min-height: 250px; height: height: auto !important; max-height: 500px;; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+			
+ <!-- /.col (LEFT) -->
+ </div>
+<div class="col-md-3">
+
+            <!-- DONUT CHART -->
+            <div class="card card-danger">
+              <div class="card-header" Style="background-color:#a233b0">
+                <h3 class="card-title">Total Cases</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+				  <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
+				  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+		
+
+
+		     
+		  
+            <!-- PIE CHART -->
+            <div class="card card-danger">
+              <div class="card-header" Style="background-color:#a233b0">
+                <h3 class="card-title">Kits Availability *</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+				  <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
+				  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+		
+ <!-- /.col (LEFT) -->
+ </div>
+<div class="col-md-3">
+
+           
+		  
+            <!-- LINE CHART -->
+            <div class="card card-info">
+              <div class="card-header" Style="background-color:#a233b0">
+                <h3 class="card-title">City wise Cases </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+				  <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
+				  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="citywise" style="min-height: 250px; width: 100%; height: 250px; max-height: 100%; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+           
+
+            <!-- STACKED BAR CHART -->
+            <div class="card card-success">
+              <div class="card-header" Style="background-color:#a233b0">
+                <h3 class="card-title">Testing for Covid *</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+				  <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
+				  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="stackedBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+	
+	
+<!-- /.col (LEFT) -->
+ </div>
+<div class="col-md-3">
+		       	
+	
+ <!-- BAR CHART2 -->
+            <div class="card card-success">
+              <div class="card-header" Style="background-color:#a233b0">
+                <h3 class="card-title">District wise cases</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+				  <button type="button" class="btn btn-tool toggle-expand-btn" ><i class="fas fa-expand"></i>
+				  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="barChart2" style="min-height: 250px; height: 100%; max-height: 100%; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+			
+            <!-- AREA CHART2 -->
+            <div class="card card-primary">
+              <div class="card-header" Style="background-color:#a233b0">
+                <h3 class="card-title">Active Vs Critical Cases *</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+				  <button type="button" class="btn btn-tool toggle-expand-btn" ><i class="fas fa-expand"></i>
+				  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="areaChart2" style="min-height: 250px; height: 250px; max-height: 500px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+  <!-- /.control-sidebar -->
+</div>   
+
+          
+                <!-- /. tools -->
+              </div>
+
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </section>
+          <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+    </section>
+
+  <!-- /.content-wrapper -->
+  <footer class="main-footer" >
+    <img class="col-md-3"src="dist/img/binary.png" style="height:auto" data-toggle="tooltip" title="www.evio.in">
+	<div class=" col-md-5 d-none d-sm-inline-block" Style="color:#c0c0c0">
+		<center><b>* Illustrative charts</b></center>
+    </div>
+	    <div class="float-right d-none d-sm-inline-block col-md-3" Style="color:#00338d">
+		<b>Designed by KPMG Disaster Management Team</b>
+    </div>
+  </footer>
+
+
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+	<script src="dist/ol.js"></script>
+	<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+	<script src="index.js"></script>
+	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+	
+	<script>
+	
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+	
+$(".toggle-expand-btn").click(function (e) {
+  $(this).closest('.card').toggleClass('panel-fullscreen');
+});
+	
+	function nav()   {
+   var w = document.myform.mylist.selectedIndex;
+   var url_add = document.myform.mylist.options[w].value;
+   document.getElementById("location").innerHTML = url_add;
+   }
+   
+   function nav1()   {
+   var w = document.myform1.mylist.selectedIndex;
+   var url_add = document.myform1.mylist.options[w].value;
+   document.getElementById("location").innerHTML = url_add;
+   }
+$(function () {
+
+    // Get context with jQuery - using jQuery's .get() method.
+    var areaChartCanvas = $('#areaChart2').get(0).getContext('2d')
+    var CriticalData = {
+      labels  : ['04-Apr-2020', '05-Apr-2020', '06-Apr-2020', '07-Apr-2020'],
+      datasets: [
+        {
+          label               : 'Active',
+          backgroundColor     : 'rgba(60,10,188,0.9)',
+          borderColor         : 'rgba(60,10,188,0.8)',
+          pointRadius          : true,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,10,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,222,188,1)',
+          data                : [3, 12, 350, 700]
+        },
+        {
+          label               : 'Critical',
+          backgroundColor     : 'rgba(210, 60, 10, 1)',
+          borderColor         : 'rgba(210, 60, 10, 1)',
+          pointRadius         : true,
+          pointColor          : 'rgba(210, 60, 10, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [1, 4, 34, 53]
+        },
+      ]
+    }
+
+    var CriticalOptions = {
+      responsive              : true,
+      maintainAspectRatio     : true,
+      scales: {
+        xAxes: [{
+          stacked: true,
+        }],
+        yAxes: [{
+          stacked: true
+        }]
+      },
+	  plugins: {
+		datalabels: {
+			display: false
+		}
+	     },
+    }
+
+    // This will get the first returned node in the jQuery collection.
+    var areaChart       = new Chart(areaChartCanvas, { 
+      type: 'horizontalBar',
+      data: CriticalData, 
+      options: CriticalOptions,
+
+    })
+
+	
+    //--------------
+    //- AREA CHART -
+    //--------------
+
+    // Get context with jQuery - using jQuery's .get() method.
+
+    var areaChartData = {
+      labels  : [],
+      datasets: [
+        {
+          label               : 'Confirmed',
+          backgroundColor     : 'rgba(60,141,188,0.9)',
+          borderColor         : 'rgba(60,141,188,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : []
+        },
+        {
+          label               : 'Hospitalized',
+          backgroundColor     : 'rgba(210, 214, 222, 1)',
+          borderColor         : 'rgba(210, 214, 222, 1)',
+          pointRadius         : false,
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : []
+        },
+      ]
+    }
+
+    var areaChartOptions = {
+      maintainAspectRatio : false,
+      responsive : true,
+      legend: {
+        display: false
+      },
+      scales: {
+        xAxes: [{
+          gridLines : {
+            display : false,
+          }
+        }],
+        yAxes: [{
+          gridLines : {
+            display : false,
+          }
+        }]
+      },plugins: {
+		datalabels: {
+			display: false
+		}
+	     },
+    }
+
+    // This will get the first returned node in the jQuery collection.
+
+	
+    //-------------
+    //- LINE CHART -
+    //-------------
+
+    //-------------
+    //- DONUT CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+    var donutData        = {
+      labels: [],
+      datasets: [
+        {
+          data: [],
+          backgroundColor : ['#ff0000', '#eaaa00', '#43b02a'],
+        }
+      ]
+    }
+    var donutOptions     = {
+      maintainAspectRatio : false,
+      responsive : true
+
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    var donutChart = new Chart(donutChartCanvas, {
+      type: 'doughnut',
+      data: donutData,
+      options: donutOptions      
+    })
+
+
+
+
+  $.ajax({
+    url : "http://eviothings.in:1880/covid19",
+    type : "GET",
+    success: function(data1) {
+	  donutChart.data.labels.push(data1[0].Cuur_Status,data1[1].Cuur_Status,data1[2].Cuur_Status);
+      donutChart.data.datasets[0].data.push(data1[0].count,data1[1].count,data1[2].count);
+      
+      // re-render the chart
+      donutChart.update();
+	  
+    }
+  });
+    //-------------
+    //- PIE CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+
+
+    //-------------
+    //- BAR CHART -
+    //-------------
+
+	
+
+  $.ajax({
+    url : "http://eviothings.in:1880/covid19/totalCases",
+    type : "GET",
+    success: function(data1) {
+	var date = [];
+      var Hospitalized = [];
+      var Recovered = [];
+      var Deceased = [];
+      for(var i in data1) {
+		date.push(data1[i].Date);
+		Hospitalized.push(data1[i].Hospitalized);
+		Recovered.push(data1[i].Recovered);
+		Deceased.push(data1[i].Deceased);
+      }
+    var barChartCanvas = $('#barChart').get(0).getContext('2d')
+    var barChartOptions = {
+	    responsive: true,
+    maintainAspectRatio: true,
+    scales: {
+        xAxes: [{
+            gridLines: {
+                drawOnChartArea: false
+            }
+        }],
+        yAxes: [{
+                    type: 'linear',
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Cases'
+                    }
+                }]
+    },
+            tooltips: {
+                mode: 'label'
+            },
+			
+			plugins: {
+		datalabels: {
+			display: false
+		}
+	     },
+			
+		/*	      plugins: {
+         datalabels: {
+						backgroundColor: function(context) {
+							return context.dataset.backgroundColor;
+						},
+            display: true,
+            align: 'center',
+            anchor: 'center',
+			color: 'black',
+			
+						font: {
+							weight: 'bold'
+						},
+			borderRadius: 4,
+         },
+		 
+      }*/
+}
+
+    var barChart = new Chart(barChartCanvas, {
+      type: 'line', 
+      data: {
+	  labels  : date,
+      datasets: [
+        {
+          label               : 'Hospitalized',
+		  fill: false,
+          backgroundColor     : 'rgb(234, 170, 0)',
+          borderColor         : 'rgb(234, 170, 0)',
+
+		  lineTension: 0.4,
+		  pointRadius: 1.5,
+          data                : Hospitalized
+        },
+        {
+          label               : 'Recovered',
+		  fill: false,
+          backgroundColor     : 'rgb(67, 176, 42)',
+          borderColor         : 'rgb(67, 176, 42)',
+		  lineTension: 0.4,
+		  pointRadius: 1.5,
+          data                : Recovered
+        },
+        {
+          label               : 'Deceased',
+		  fill: false,
+          backgroundColor     : 'rgb(255, 0, 0)',
+          borderColor         : 'rgb(255, 0, 0)',
+		  lineTension: 0.4,
+		  pointRadius: 1.5,
+          data                : Deceased
+        }
+		  
+      ]
+	  },
+      options: barChartOptions
+    })
+	  
+    }
+  });
+	
+	
+	 //-------------
+    //- BAR CHART2 -
+    //-------------
+	
+	 var barChartData = {
+      labels  : ['Mumbai', 'Pune', 'Nagpur', 'Aurangabad'],
+      datasets: [
+        {
+          label               : 'Active',
+          backgroundColor     : 'rgba(60,141,188,0.9)',
+          borderColor         : 'rgba(60,141,188,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [112, 77, 27, 5]
+        },
+        {
+          label               : 'Critical',
+          backgroundColor     : 'rgba(210, 214, 222, 1)',
+          borderColor         : 'rgba(210, 214, 222, 1)',
+          pointRadius         : false,
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [9, 7, 2, 1]
+        },
+		  
+      ]
+    }
+	
+
+    //---------------------
+    //- STACKED BAR CHART -
+    //---------------------
+    var stackedBarChartData = jQuery.extend(true, {}, barChartData)
+
+    var stackedBarChartOptions = {
+      responsive              : true,
+      maintainAspectRatio     : false,
+      scales: {
+        xAxes: [{
+          stacked: true,
+        }],
+        yAxes: [{
+          stacked: true
+        }]
+      },plugins: {
+		datalabels: {
+			display: false
+		}
+	     },
+    }
+
+    var stackedBarChart = new Chart(stackedBarChartCanvas, {
+      type: 'bar', 
+      data: stackedBarChartData,
+      options: stackedBarChartOptions
+    })
+	})
+	
+	
+  function confirmed() {
+}
+ function Hospitalized() {
+}
+ function Recovered() {
+}
+ function Deceased() {
+}
+ function Home_Quarantine() {
+}
+ function Tested() {
+}
+ function Scanned() {
+}
+ function MF() {
+  alert("MF");
+}
+$.ajax({
+    url : "http://eviothings.in:1880/covid19/citywise",
+    type : "GET",
+    success: function(data) {
+	 var city_id = [];
+      var Hospitalized = [];
+      var Recovered = [];
+      var Deceased = [];
+      for(var i in data) {
+		city_id.push(data[i].City_ID);
+		Hospitalized.push(data[i].Hospitalized);
+		Recovered.push(data[i].Recovered);
+		Deceased.push(data[i].Deceased);
+      }
+	  console.log(city_id);
+
+    var citywise = $('#citywise').get(0).getContext('2d')
+    var citywiseOptions = {
+      responsive              : true,
+      maintainAspectRatio     : false,
+      scales: {
+        xAxes: [{
+          stacked: true,
+        }],
+        yAxes: [{
+          stacked: true
+        }]
+      },plugins: {
+		datalabels: {
+			display: false
+		}
+	     },
+    }
+
+    var cirtwisebarChart = new Chart(citywise, {
+      type: 'horizontalBar', 
+      data: {
+	  labels  : city_id,
+      datasets: [
+        {
+          label               : 'Hospitalized',
+		  pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgb(234, 170, 0)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgb(234, 170, 0)',
+		  
+          backgroundColor     : 'rgb(234, 170, 0)',
+          borderColor         : 'rgb(234, 170, 0)',
+          data                : Hospitalized
+        },
+        {
+          label               : 'Recovered',
+		  pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgb(67, 176, 42)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgb(67, 176, 42)',
+		  
+          backgroundColor     : 'rgb(67, 176, 42)',
+          borderColor         : 'rgb(67, 176, 42)',
+          data                : Recovered
+        },
+        {
+          label               : 'Deceased',
+		  pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgb(255, 0, 0)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgb(255, 0, 0)',
+          backgroundColor     : 'rgb(255, 0, 0)',
+          borderColor         : 'rgb(255, 0, 0)',
+          data                : Deceased
+        }
+		  
+      ]
+	  },
+      options: citywiseOptions
+    })
+	  
+    }  
+  });
+  
+  
+  
+ $.ajax({
+    url : "http://eviothings.in:1880/covid19/distwise",
+    type : "GET",
+    success: function(data) {	
+	var Dist_name = [];
+      var Hospitalized = [];
+      var Recovered = [];
+      var Deceased = [];
+      for(var i in data) {
+		Dist_name.push(data[i].Dist_name);
+		Hospitalized.push(data[i].Hospitalized);
+		Recovered.push(data[i].Recovered);
+		Deceased.push(data[i].Deceased);
+      }
+	  
+
+    var distwise = $('#barChart2').get(0).getContext('2d')
+    var distwiseOptions = {
+      responsive              : true,
+      maintainAspectRatio     : true,
+      scales: {
+        xAxes: [{
+          stacked: true,
+        }],
+        yAxes: [{
+          stacked: true
+        }]
+      },
+	  plugins: {
+		datalabels: {
+			display: false
+		}
+	     },
+    }
+
+    var cirtwisebarChart = new Chart(distwise, {
+      type: 'horizontalBar', 
+      data: {
+	  labels  : Dist_name,
+      datasets: [
+        {
+          label               : 'Hospitalized',
+		  pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgb(234, 170, 0)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgb(234, 170, 0)',
+		  
+          backgroundColor     : 'rgb(234, 170, 0)',
+          borderColor         : 'rgb(234, 170, 0)',
+          data                : Hospitalized
+        },
+        {
+          label               : 'Recovered',
+		  pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgb(67, 176, 42)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgb(67, 176, 42)',
+		  
+          backgroundColor     : 'rgb(67, 176, 42)',
+          borderColor         : 'rgb(67, 176, 42)',
+          data                : Recovered
+        },
+        {
+          label               : 'Deceased',
+		  pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgb(255, 0, 0)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgb(255, 0, 0)',
+          backgroundColor     : 'rgb(255, 0, 0)',
+          borderColor         : 'rgb(255, 0, 0)',
+          data                : Deceased
+        }
+		  
+      ]
+	  },
+      options: distwiseOptions
+    })
+	  
+    }  
+  });
+  
+      var bedandwardCanvas = $('#areaChart').get(0).getContext('2d')
+
+    var bedandwardOptions = {
+      responsive              : true,
+      maintainAspectRatio     : false,
+      datasetFill             : false,
+	  plugins: {
+		datalabels: {
+			display: false
+		}
+	     },
+    }
+
+    var barChart = new Chart(bedandwardCanvas, {
+      type: 'bar', 
+      data: {
+      labels  : ['04-Apr-2020', '05-Apr-2020', '06-Apr-2020', '07-Apr-2020'],
+      datasets: [
+        {
+          label               : 'Isolation Wards',
+          backgroundColor     : 'rgba(60,141,188,0.9)',
+          borderColor         : 'rgba(60,141,188,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [590, 480, 170, 1600]
+        },
+        {
+          label               : 'Isolation Beds',
+          backgroundColor     : 'rgba(210, 214, 222, 1)',
+          borderColor         : 'rgba(210, 214, 222, 1)',
+          pointRadius         : false,
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [50, 300, 520, 2230]
+        },
+      ]
+    },
+      options: bedandwardOptions
+    })
+	
+	
+		   var barChartData3 = {
+      labels  : ['04-Apr-2020', '05-Apr-2020', '06-Apr-2020', '07-Apr-2020'],
+      datasets: [
+        {
+          label               : 'Kits Availability',
+          backgroundColor     : 'rgba(60,141,188,0.9)',
+          borderColor         : 'rgba(60,141,188,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [28, 48, 170, 1600]
+        },
+        {
+          label               : 'Mask',
+          backgroundColor     : 'rgb(255, 0, 0)',
+          borderColor         : 'rgb(255, 0, 0)',
+          pointRadius         : false,
+          pointColor          : 'rgb(255, 0, 0)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgb(255, 0, 0)',
+          data                : [50, 120, 520, 2230]
+        },
+      ]
+    }
+	
+	
+    var barChartCanvas = $('#pieChart').get(0).getContext('2d')
+    var barChartData = jQuery.extend(true, {}, barChartData3)
+    var temp0 = barChartData3.datasets[0]
+    var temp1 = barChartData3.datasets[1]
+    barChartData.datasets[0] = temp1
+    barChartData.datasets[1] = temp0
+
+    var barChartOptions = {
+      responsive              : true,
+      maintainAspectRatio     : false,
+      datasetFill             : false,
+	  plugins: {
+		datalabels: {
+			display: false
+		}
+	     },
+    }
+
+    var barChart = new Chart(barChartCanvas, {
+      type: 'bar', 
+      data: barChartData,
+      options: barChartOptions
+    })
+	
+	
+	
+	
+	    //--------------
+    //- AREA CHART -
+    //--------------
+
+    // Get context with jQuery - using jQuery's .get() method.
+    var testingCanvas = $('#stackedBarChart').get(0).getContext('2d')
+
+    var testingData = {
+      labels  : ['04-Apr-2020', '05-Apr-2020', '06-Apr-2020', '07-Apr-2020'],
+      datasets: [
+        {
+          label               : 'Confirmed',
+          backgroundColor     : 'rgba(60,141,188,0.9)',
+          borderColor         : 'rgba(60,141,188,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [28, 48, 170, 1600]
+        },
+        {
+          label               : 'Hospitalized',
+          backgroundColor     : 'rgba(210, 214, 222, 1)',
+          borderColor         : 'rgba(210, 214, 222, 1)',
+          pointRadius         : false,
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [50, 120, 520, 2230]
+        },
+      ]
+    }
+
+    var testingOptions = {
+      maintainAspectRatio : false,
+      responsive : true,
+      legend: {
+        display: false
+      },
+      scales: {
+        xAxes: [{
+          gridLines : {
+            display : false,
+          }
+        }],
+        yAxes: [{
+          gridLines : {
+            display : false,
+          }
+        }]
+      },
+	  plugins: {
+		datalabels: {
+			display: false
+		}
+	     },
+    }
+    var areaChart       = new Chart(testingCanvas, { 
+      type: 'line',
+      data: testingData, 
+      options:testingOptions
+    })
+	
+	
+		  $.ajax({
+    url : "http://eviothings.in:1880/Covid19",
+    type : "GET",
+    success: function(data1) {
+      console.log(data1);
+	for (var i in data1){
+	if(data1[i].Cuur_Status == "Deceased"){
+		document.getElementById("Deceased").innerHTML = data1[i].count;
+	}
+	if(data1[i].Cuur_Status == "Hospitalized"){
+		document.getElementById("Hospitalized").innerHTML = data1[i].count;
+	}
+	if(data1[i].Cuur_Status == "Recovered"){
+		document.getElementById("Recovered").innerHTML = data1[i].count;
+	}
+	
+		
+	if(data1[i].Cuur_Status == "SUM"){
+		document.getElementById("confirmed").innerHTML = data1[i].count;
+	}
+	}
+	  
+    }
+  });
+</script>
+</body>
+</html>
