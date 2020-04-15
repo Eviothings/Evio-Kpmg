@@ -8,7 +8,6 @@ var maha = ol.proj.fromLonLat([73.794,18.635]);
 
 
 var overviewMapControl = new ol.control.OverviewMap({
-  // see in overviewmap-custom.html to see the custom CSS used
   className: 'ol-overviewmap ol-custom-overviewmap',
   layers: [
 	new ol.layer.Vector({
@@ -470,7 +469,25 @@ style: pcmc_doctor_style
         })
       })
     })
-
+	
+	   var pcmc_hos = new ol.style.Style({
+      image: new ol.style.Circle({
+        radius: 7,
+        fill: new ol.style.Fill({color: 'blue'}),
+        stroke: new ol.style.Stroke({
+          color: 'rgba(255, 0, 0)', width: 4
+        })
+      })
+    })
+	   var pcmc_med_col = new ol.style.Style({
+      image: new ol.style.Circle({
+        radius: 7,
+        fill: new ol.style.Fill({color: 'orange'}),
+        stroke: new ol.style.Stroke({
+          color: 'rgba(0, 0, 0)', width: 4
+        })
+      })
+    })
 
 
 var pcmc_bloodbank = new ol.layer.Vector({
@@ -485,6 +502,31 @@ format: new ol.format.GeoJSON(),
 style: pcmcbloodbank
 });
 	
+	
+	var pcmc_hospitals = new ol.layer.Vector({
+title: 'PCMC Hospital Details',
+visible: false,
+source: new ol.source.Vector({
+ratio: 0,
+params: {'LAYERS': 'show:0'},    
+url: 'Data/pune/Hospitals.geojson',
+format: new ol.format.GeoJSON(),
+}),
+style: pcmc_hos
+});
+
+
+	var pcmc_med_collages = new ol.layer.Vector({
+title: 'PCMC Medical Collages',
+visible: false,
+source: new ol.source.Vector({
+ratio: 0,
+params: {'LAYERS': 'show:0'},    
+url: 'Data/pune/Medical_Colleges.geojson',
+format: new ol.format.GeoJSON(),
+}),
+style: pcmc_med_col
+});
 	
 	
 	var AerialWithLabels = new ol.layer.Tile({
@@ -510,7 +552,7 @@ var map = new ol.Map({
                         visible: false,
                         source: new ol.source.OSM(),
                     }),AerialWithLabels, PCMC_Ward]
-			}),pcmc_bloodbank,pcmc_doctor
+			}),pcmc_bloodbank,pcmc_doctor,pcmc_hospitals,pcmc_med_collages
 			
 			],
 	
@@ -597,7 +639,32 @@ map.on('click', function(evt){
 
         }  
 		 
-	
+			
+		else if(layer == pcmc_hospitals){
+        var geometry = feature.getGeometry();
+        var coord = geometry.getCoordinates();
+        
+        var content = '<h5>' + feature.get('Name_of_Ho') + '</h5></br>';
+        content += '<h6>' + feature.get('Address') + '</h6></br>';
+		content += '<h6>' + feature.get('Contact_No') + '</h6></br>';
+        
+        content_element.innerHTML = content;
+        overlay.setPosition(coord);
+
+        } 
+		
+		
+		else if(layer == pcmc_med_collages){
+        var geometry = feature.getGeometry();
+        var coord = geometry.getCoordinates();
+        
+        var content = '<h5>' + feature.get('College_Na') + '</h5></br>';
+        content += '<h6>' + feature.get('Address') + '</h6></br>';
+        
+        content_element.innerHTML = content;
+        overlay.setPosition(coord);
+
+        }
     }
 	
 	
