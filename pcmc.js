@@ -64,12 +64,6 @@ var defaultStyle = new ol.style.Style({
   })
 });
 
-
-
-
-
-//earcthqu clust
-
 var earthquakeFill = new ol.style.Fill({
   color: 'rgba(255, 153, 0, 0.8)'
 });
