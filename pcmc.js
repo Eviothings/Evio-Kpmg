@@ -610,7 +610,7 @@ map.on('click', function(evt){
         var geometry = feature.getGeometry();
         var coord = geometry.getCoordinates();
         
-        var content = '<h5>' + feature.get('USER_Docto') + '</h5></br>';
+            var content = '<h5>' + feature.get('Name') + '</h5></br>';
         content += '<h6>' + feature.get('Match_addr') + '</h6></br>';
 		content += '<h6>' + feature.get('USER_Mobil') + '</h6></br>';
         
