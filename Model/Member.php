@@ -83,7 +83,7 @@ class Member
         }
         if ($loginPassword == 1) {
             $_SESSION["username"] = $loginUserResult[0]["username"];
-			if($_SESSION["username"] == "pcmc"){
+			if($_SESSION["username"] == "pmc"){
             $url = "./pcmc_user.html";
             header("Location: $url");
 			}

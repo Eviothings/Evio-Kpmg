@@ -1,255 +1,640 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Covid-19</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Covid-19</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://openlayers.org/en/latest/css/ol.css" />
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
 
-  
-  
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.2.1/css/ol.css">
+
+
+    <!-- summernote -->
+    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.2.1/css/ol.css">
     <link rel="stylesheet" href="Src/ol-layerswitcher.css" />
-<link rel="stylesheet" href="Src/layerswitcher.css" />	
-<link rel="stylesheet" href="dist/ol-ext.css"/>
-    
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="Src/layerswitcher.css" />
+    <link rel="stylesheet" href="dist/ol-ext.css" />
 
-  <style> 
-  
-  
-  
-  .footer {
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:96%;
-}
-      .ol-legend ul {
-      margin-bottom: 7px;
-    }
-    .ol-legend ul li {
-      overflow: visible;
-      text-align: right;
-    }
-.ol-popup {
-    position: absolute;
-    min-width: 180px;
-    background-color: white;
-    -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
-    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    bottom: 12px;
-    left: -50px;
-}
-.ol-popup:after, .ol-popup:before {
-    top: 100%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-}
-.ol-popup:after {
-    border-top-color: white;
-    border-width: 10px;
-    left: 48px;
-    margin-left: -10px;
-}
-.ol-popup:before {
-    border-top-color: #cccccc;
-    border-width: 11px;
-    left: 48px;
-    margin-left: -11px;
-}
-.ol-popup-closer {
-    text-decoration: none;
-    position: absolute;
-    top: 2px;
-    right: 8px;
-}
-.ol-popup-closer:after {
-    content: "✖";
-}
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <style>
 
 
 
-#rcorners2 {
-  border-radius: 10px;
-  height:5px;
- 
-}
-.btn{
-color: white;
-}
-.btn:hover{
-color:#C0C0C0;
-}
-#grad4 {
-  height: auto; 
-  background-image: linear-gradient(to right, rgba(255, 198, 240,3),rgba(255,0,0,0), rgba(109, 32, 119,1));
-  
-}
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 96%;
+        }
+
+        .ol-legend ul {
+            margin-bottom: 7px;
+        }
+
+            .ol-legend ul li {
+                overflow: visible;
+                text-align: right;
+            }
+
+        .ol-popup {
+            position: absolute;
+            min-width: 180px;
+            background-color: white;
+            -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            bottom: 12px;
+            left: -50px;
+        }
+
+            .ol-popup:after, .ol-popup:before {
+                top: 100%;
+                border: solid transparent;
+                content: " ";
+                height: 0;
+                width: 0;
+                position: absolute;
+                pointer-events: none;
+            }
+
+            .ol-popup:after {
+                border-top-color: white;
+                border-width: 10px;
+                left: 48px;
+                margin-left: -10px;
+            }
+
+            .ol-popup:before {
+                border-top-color: #cccccc;
+                border-width: 11px;
+                left: 48px;
+                margin-left: -11px;
+            }
+
+        .ol-popup-closer {
+            text-decoration: none;
+            position: absolute;
+            top: 2px;
+            right: 8px;
+        }
+
+            .ol-popup-closer:after {
+                content: "✖";
+            }
 
 
-.ol-legend.ol-unselectable.ol-control{
-	background-color:white;
-	margin-bottom:50px;
-}
 
-.ol-legend.ol-unselectable.ol-control.ol-collapsed{
-margin-bottom:50px;
-}
-.ol-custom-overviewmap,
-.ol-custom-overviewmap.ol-uncollapsible {
-  bottom: 0;
-  left: auto;
-  right: 0;
-  top: auto;
-}
+        #rcorners2 {
+            border-radius: 10px;
+            height: 5px;
+        }
 
-.ol-custom-overviewmap:not(.ol-collapsed)  {
-  border: 1px solid black;
-}
+        .btn {
+            color: white;
+        }
 
-.ol-custom-overviewmap .ol-overviewmap-map {
-  border: none;
-  width: 100px;
-  height:100px;
-}
+            .btn:hover {
+                color: #C0C0C0;
+            }
 
-.ol-custom-overviewmap .ol-overviewmap-box {
-  border: 2px solid red;
-}
-
-.ol-custom-overviewmap:not(.ol-collapsed) button{
-  bottom: 1px;
-  left: auto;
-  right: 1px;
-  top: auto;
-}
-
-.ol-rotate {
-  top: 170px;
-  right: 0;
-}
-
-  .ol-legend ul li.ol-title > div:last-child {
-    position:absolute;
-    left:0;
-    right:0;
-    top: 10px
-  }
-  
-      .options canvas {
-      background-color: #fff;
-      width: 60px;
-    }
-.row {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-}
-.row > [class*='col-'] {
-	 display: flex;
-	 flex-direction: column;
-}
+        #grad4 {
+            height: auto;
+            background-image: linear-gradient(to right, rgba(255, 198, 240,3),rgba(255,0,0,0), rgba(109, 32, 119,1));
+        }
 
 
-#example > tbody > tr > td:nth-child(2){
-    background : #00338d !important;
-	color:white;
-}
+        .ol-legend.ol-unselectable.ol-control {
+            background-color: white;
+            margin-bottom: 50px;
+        }
 
-#example > tbody > tr > td:nth-child(3){
-    background : #eaaa00 !important;
-	color:white;
-}
-#example > tbody > tr > td:nth-child(4){
-    background : #43b02a !important;
-	color:white;
-}
-#example > tbody > tr > td:nth-child(5){
-    background : #ff0000 !important;
-	color:white;
-}
-    
-</style>
+            .ol-legend.ol-unselectable.ol-control.ol-collapsed {
+                margin-bottom: 50px;
+            }
+
+        .ol-custom-overviewmap,
+        .ol-custom-overviewmap.ol-uncollapsible {
+            bottom: 0;
+            left: auto;
+            right: 0;
+            top: auto;
+        }
+
+            .ol-custom-overviewmap:not(.ol-collapsed) {
+                border: 1px solid black;
+            }
+
+            .ol-custom-overviewmap .ol-overviewmap-map {
+                border: none;
+                width: 100px;
+                height: 100px;
+            }
+
+            .ol-custom-overviewmap .ol-overviewmap-box {
+                border: 2px solid red;
+            }
+
+            .ol-custom-overviewmap:not(.ol-collapsed) button {
+                bottom: 1px;
+                left: auto;
+                right: 1px;
+                top: auto;
+            }
+
+        .ol-rotate {
+            top: 170px;
+            right: 0;
+        }
+
+        .ol-legend ul li.ol-title > div:last-child {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 10px
+        }
+
+        .options canvas {
+            background-color: #fff;
+            width: 60px;
+        }
+
+        .row {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+        }
+
+            .row > [class*='col-'] {
+                display: flex;
+                flex-direction: column;
+            }
+
+
+        #example > tbody > tr > td:nth-child(2) {
+            background: #00338d !important;
+            color: white;
+        }
+
+        #example > tbody > tr > td:nth-child(3) {
+            background: #eaaa00 !important;
+            color: white;
+        }
+
+        #example > tbody > tr > td:nth-child(4) {
+            background: #43b02a !important;
+            color: white;
+        }
+
+        #example > tbody > tr > td:nth-child(5) {
+            background: #ff0000 !important;
+            color: white;
+        }
+    </style>
 </head>
-<body class="hold-transition sidebar-mini sidebar-collapse" >
+<body class="hold-transition sidebar-mini sidebar-collapse">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light" id="grad4">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+                </li>
+
+                <li>
+                    <h1><a href="./analytics.html" class="text-lg" style="color:#6d2077">Covid-19 Dashboard</a></h1>
+                </li>
+            </ul>
 
 
-                    <!-- Map will be created here -->
-                    <div id="map" ">
-					        <div id="popup" class="ol-popup">
-            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-            <div id="popup-content"></div>
+            <!-- SEARCH FORM -->
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Messages Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <ion-icon name="chatbubbles-outline" size="large" style="color: white" ;></ion-icon>
+                        <span class="badge badge-danger navbar-badge">2</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Dr.Sachin Pawar
+                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">Need Testing Kit in Mumbai Hospital...</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Dr. Rajesh
+                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">2 patient recovered</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                    </div>
+                </li>
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <ion-icon name="notifications-outline" size="large" style="color: white" ;></ion-icon>
+                        <span class="badge badge-warning navbar-badge">2</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">2 Notifications</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> 2 new messages
+                            <span class="float-right text-muted text-sm">3 mins</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-users mr-2"></i> 8 New cases in Mumbai
+                            <span class="float-right text-muted text-sm">12 hours</span>
+                        </a>
+
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-light-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="./pcmc_user.html" class="brand-link">
+                <img src="images/logo.png" alt="Covid-19" class="brand-image img-circle elevation-3"
+                     style="opacity: .8">
+                <span class="brand-text font-weight-light">Covid-19 Dashboard</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="index.php" class="d-block">Logout</a>
+                    </div>
+                </div>
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item has-treeview menu-close">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Home
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./pcmc_user.html" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Dashboard</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./analytics.html" class="nav-link">
+                                        <i class="nav-icon fas fa-chart-pie"></i>
+                                        <p>Analytics</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item has-treeview menu-close">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-plus-square"></i>
+                                <p>
+                                    Medical Facility
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./medical/ccc.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>CCC-NICMR Baner</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>DCHC-Sasoon Hospital</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>DHC-Bharti Hospital</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section class="content" Style="height:auto" id="content">
+                <div class="container-fluid">
+                    <div class="row mb-8">
+                        <div class="col-sm-3">
+                            <h1 class="m-0 text-dark" id="location">Pune</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-borderless text-center" style="border-spacing: 5px;   border-collapse: separate;">
+                        <tr>
+                            <th id="rcorners2">Confirmed </th>
+                            <th id="rcorners2">Hospitalized </th>
+                            <th id="rcorners2">Recovered </th>
+                            <th id="rcorners2"> Deceased </th>
+                            <th id="rcorners2">Home Quarantine</th>
+                            <th id="rcorners2">Tested </th>
+                            <th id="rcorners2"> Scanned </th>
+                            <th id="rcorners2">Medical Facility</th>
+                        </tr>
+
+
+                        <tr>
+                            <td bgcolor="#00338d" id="rcorners2">
+                                <button type="button" Style="font-size:20px;" class="btn btn-block btn-flat" onclick="confirmed()" id="confirmed">181 [+25]</button>
+                            </td>
+                            <td bgcolor="#eaaa00" id="rcorners2">
+                                <button type="button" Style="font-size:20px;" class="btn btn-block btn-flat" onclick="Hospitalized()" id="Hospitalized">177 [+25]</button>
+                            </td>
+                            <td bgcolor="#43b02a" id="rcorners2">
+                                <button type="button" Style="font-size:20px;" class="btn btn-block btn-flat" onclick="Recovered()" id="Recovered">2 [0]</button>
+                            </td>
+                            <td bgcolor="#ff0000" id="rcorners2">
+                                <button type="button" Style="font-size:20px;" class="btn btn-block btn-flat" onclick="Deceased()" id="Deceased">2 [0]</button>
+                            </td>
+                            <td bgcolor="#9b642e" id="rcorners2">
+                                <button type="button" class="btn btn-block btn-flat" onclick="Home_Quarantine()">Data Awaited</button>
+                            </td>
+                            <td bgcolor="#00b0f0" id="rcorners2">
+                                <button type="button" class="btn btn-block btn-flat" onclick="Tested()">Data Awaited</button>
+                            </td>
+                            <td bgcolor="#00a3a1" id="rcorners2">
+                                <button type="button" class="btn btn-block btn-flat" onclick="Scanned()">Data Awaited</button>
+                            </td>
+                            <td bgcolor="#c00000" id="rcorners2">
+                                <button type="button" class="btn btn-block btn-flat" onclick="MF()">Data Awaited</button>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+                <!-- /.row -->
+                <!-- Main row -->
+                <!-- Left col -->
+                <div class="row">
+                    <!-- Custom tabs (Charts with tabs)-->
+
+                    <div class="card col-lg-8">
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <div class="d-md-flex">
+                                <div class="p-1 flex-fill" style="overflow: hidden">
+                                    <!-- Map will be created here -->
+                                    <div id="map" Style="height:450px">
+                                        <div id="popup" class="ol-popup">
+                                            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                                            <div id="popup-content"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div><!-- /.d-md-flex -->
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <div class="col-lg-4">
+                        <!-- TABLE: LATEST ORDERS -->
+
+                        <div class="card card-primary">
+                            <div class="card-header border-transparent" Style="background-color:#a233b0">
+                                <h3 class="card-title">Most Affected 5 Wards</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-sm text-center" id="example">
+                                        <thead>
+                                            <tr>
+                                                <th>Ward</th>
+                                                <th>Hospitalized</th>
+                                            </tr>
+                                        </thead>
+
+
+
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.card-body -->
+                            <!-- /.card-footer -->
+                        </div>
+
+                        <!-- TABLE: LATEST ORDERS -->
+                        <div class="card card-primary">
+                            <div class="card-header border-transparent" Style="background-color:#a233b0">
+                                <h3 class="card-title">Latest News</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-sm" id="news">
+                                        <thead>
+                                            <tr>
+                                                <th>Headline</th>
+                                                <th>DateTime</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.card-body -->
+                            <!-- /.card-footer -->
+                        </div>
+                    </div><!-- /.col -->
+                </div><!-- /.main row -->
+                <!-- /.row (main row) -->
+            </section>
         </div>
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="plugins/moment/moment.min.js"></script>
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<script src="dist/js/adminlte.js"></script>
-<!-- Summernote -->
-<script src="plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
 
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
-  <script type="text/javascript" src="https://openlayers.org/en/latest/build/ol.js"></script>
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL,Object.assign"></script>
-  <script src="dist/ol-ext.js"></script>
+    </div>
+    <!-- ./wrapper -->
+    <footer class="main-footer" Style="position:fixed;  bottom:0; width:95%">
+        <img src="dist/img/binary.png" style="height:auto" data-toggle="tooltip" title="www.evio.in">
+        <div class="float-right d-none d-sm-inline-block" Style="color:#00338d">
+            <b>Designed by KPMG Disaster Management Team</b>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://openlayers.org/en/latest/build/ol.js"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL,Object.assign"></script>
+    <script src="dist/ol-ext.js"></script>
     <script src="dist/ol-layerswitcher.js"></script>
     <script src="pcmc.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.2.1/chroma.min.js"></script>
-<script src="https://www.intermezzo-coop.eu/mapping/geostats/lib/geostats.js"></script>
-<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.2.1/chroma.min.js"></script>
+    <script src="https://www.intermezzo-coop.eu/mapping/geostats/lib/geostats.js"></script>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="dist/js/adminlte.js"></script>
+    <!-- Summernote -->
+    <script src="plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="dist/js/pages/dashboard.js"></script>
+    <script src="dist/js/ajax.js"></script>
+    <script>
+        (function () {
+            $('.footer').css('position', $(document).height() > $(window).height() ? "inherit" : "fixed");
+        })();
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
 
-</div>
+        var table = $('#example').DataTable({
+            "language": {
+                "info": "Zoom to respective Ward in the map to see the details",
+            },
+            "bPaginate": false,
+            "searching": false,
+            "ajax": './Data/pune/arrays.txt'
+
+        });
+
+
+
+
+        var table = $('#news').DataTable({
+            "language": {
+                "info": "",
+            },
+            "bPaginate": false,
+            "searching": false,
+            "ajax": './Data/pune/pune_news.txt'
+        });
+
+
+        function nav() {
+            var w = document.myform.mylist.selectedIndex;
+            var url_add = document.myform.mylist.options[w].value;
+            document.getElementById("location").innerHTML = url_add;
+        }
+
+        function nav1() {
+            var w = document.myform1.mylist.selectedIndex;
+            var url_add = document.myform1.mylist.options[w].value;
+            document.getElementById("location").innerHTML = url_add;
+        }
+
+        function confirmed() {
+            wardCases();
+        }
+        function Hospitalized() {
+        }
+        function Recovered() {
+        }
+        function Deceased() {
+        }
+        function Home_Quarantine() {
+        }
+        function Tested() {
+        }
+        function Scanned() {
+        }
+
+        function MF() {
+            
+        }
+    </script>
+    </div>
 </body>
 </html>

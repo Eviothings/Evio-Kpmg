@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"name": "Containment_Zones_Point",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Sr_No": 1.0, "Pu_Con_zon": "Ganj Peth", "Y": 18.508629, "X": 73.86574 }, "geometry": { "type": "Point", "coordinates": [ 73.86574, 18.508629 ] } },
+{ "type": "Feature", "properties": { "Sr_No": 2.0, "Pu_Con_zon": "Kasewadi", "Y": 18.505693, "X": 73.870676 }, "geometry": { "type": "Point", "coordinates": [ 73.870676, 18.505693 ] } },
+{ "type": "Feature", "properties": { "Sr_No": 3.0, "Pu_Con_zon": "City Point", "Y": 18.538961, "X": 73.87515 }, "geometry": { "type": "Point", "coordinates": [ 73.87515, 18.538961 ] } },
+{ "type": "Feature", "properties": { "Sr_No": 4.0, "Pu_Con_zon": "Jehangir Chowk", "Y": 18.530708, "X": 73.875597 }, "geometry": { "type": "Point", "coordinates": [ 73.875597, 18.530708 ] } },
+{ "type": "Feature", "properties": { "Sr_No": 5.0, "Pu_Con_zon": "Saurabh Hall", "Y": 18.53119, "X": 73.874949 }, "geometry": { "type": "Point", "coordinates": [ 73.874949, 18.53119 ] } },
+{ "type": "Feature", "properties": { "Sr_No": 6.0, "Pu_Con_zon": "Lumbininagar near DRM Office", "Y": 18.530344, "X": 73.8724 }, "geometry": { "type": "Point", "coordinates": [ 73.8724, 18.530344 ] } },
+{ "type": "Feature", "properties": { "Sr_No": 7.0, "Pu_Con_zon": "Naidu Hospital Vasahat", "Y": 18.531334, "X": 73.869112 }, "geometry": { "type": "Point", "coordinates": [ 73.869112, 18.531334 ] } },
+{ "type": "Feature", "properties": { "Sr_No": 8.0, "Pu_Con_zon": "Rajiv Gandhi Nagar", "Y": 18.46044, "X": 73.869883 }, "geometry": { "type": "Point", "coordinates": [ 73.869883, 18.46044 ] } },
+{ "type": "Feature", "properties": { "Sr_No": 9.0, "Pu_Con_zon": "Parvati Darshan", "Y": 18.49125, "X": 73.850201 }, "geometry": { "type": "Point", "coordinates": [ 73.850201, 18.49125 ] } },
+{ "type": "Feature", "properties": { "Sr_No": 10.0, "Pu_Con_zon": "Ramnagar", "Y": 18.522705, "X": 73.777898 }, "geometry": { "type": "Point", "coordinates": [ 73.777898, 18.522705 ] } }
+]
+}

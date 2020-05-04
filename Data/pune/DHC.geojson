@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "DHC",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Sno": 1.0, "Ward": "Dhole Patil Road,  Nagar Road Wadgaon Sheri Sangamwadi", "Type_Cente": "DHC", "Name_Cente": "Sasoon Hospital", "Color_Code": 2.0, "Y": 18.525795, "X": 73.871805, "Pvt_Govt": "Govt", "Capacity": 40.0, "ICU": null, "Dr_Incharg": "Tambe", "Mob_No": 9423007900.0, "F13": null }, "geometry": { "type": "Point", "coordinates": [ 73.871805, 18.525795 ] } },
+{ "type": "Feature", "properties": { "Sno": 2.0, "Ward": "Sahakarnagar Dhankawadi, Sighgad Road, Warje KarveNagar, Hadapsar Mundhava, Kondhava Yewalewadi, Wanawadi ramtekadi", "Type_Cente": "DHC", "Name_Cente": "Symbiosis University Hospital, Lavale", "Color_Code": 3.0, "Y": 18.538581, "X": 73.727704, "Pvt_Govt": "Pvt", "Capacity": 30.0, "ICU": null, "Dr_Incharg": "Natrajan", "Mob_No": 9822251690.0, "F13": null }, "geometry": { "type": "Point", "coordinates": [ 73.727704, 18.538581 ] } },
+{ "type": "Feature", "properties": { "Sno": 3.0, "Ward": "Kasba Vishrambaghwada, Bhavani Peth, Bibwewadi", "Type_Cente": "DHC", "Name_Cente": "Bharati Hospital", "Color_Code": 1.0, "Y": 18.459322, "X": 73.857234, "Pvt_Govt": "Pvt", "Capacity": 15.0, "ICU": null, "Dr_Incharg": "Lalwani", "Mob_No": 822051716.0, "F13": null }, "geometry": { "type": "Point", "coordinates": [ 73.857234, 18.459322 ] } },
+{ "type": "Feature", "properties": { "Sno": 0.0, "Ward": null, "Type_Cente": null, "Name_Cente": null, "Color_Code": 0.0, "Y": 0.0, "X": 0.0, "Pvt_Govt": null, "Capacity": 0.0, "ICU": null, "Dr_Incharg": null, "Mob_No": 0.0, "F13": null }, "geometry": { "type": "Point", "coordinates": [ 0.0, 0.0 ] } }
+]
+}

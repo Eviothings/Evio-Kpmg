@@ -1,0 +1,24 @@
+{
+  "data": [
+    [
+      "Bhavani Peth",
+      "325"
+    ],
+    [
+      "Dhole Patil Road",
+      "246"
+    ],
+    [
+      "Shivajinagar Ghole Road",
+      "227"
+    ],
+    [
+      "Yerwade-Kalas-Dhanori",
+      "172"
+    ],
+    [
+      "Kasba Vishrambaghwada",
+      "151"
+    ]
+  ]
+}
