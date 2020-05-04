@@ -10,6 +10,15 @@
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+	
+	  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+	 <!-- bing-->
+		 <script src="../dist/js/leaflet.js.download"></script>
+    <script src="../dist/js/polyfill.min.js.download"></script>
+    <script src="../dist/js/leaflet-bing-layer.js.download"></script>
+    <link href="../dist/js/leaflet.css" rel="stylesheet">
+	
     <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link rel="stylesheet" href="../plugins/jqvmap/jqvmap.min.css">
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
@@ -21,6 +30,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.2.1/css/ol.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+	
     <style>
         #rcorners2 {
             border-radius: 10px;
@@ -112,7 +122,6 @@
                             <i class="fas fa-users mr-2"></i> 8 New cases in Mumbai
                             <span class="float-right text-muted text-sm">12 hours</span>
                         </a>
-
                 </li>
             </ul>
         </nav>
@@ -166,8 +175,6 @@
                                 </li>
                             </ul>
                         </li>
-
-
                         <li class="nav-item has-treeview menu-close">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon far fa-plus-square"></i>
@@ -178,7 +185,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./ccc.html" class="nav-link active">
+                                    <a href="../medical/ccc.html" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>CCC-NICMR Baner</p>
                                     </a>
@@ -197,10 +204,6 @@
                                 </li>
                             </ul>
                         </li>
-
-
-
-
                     </ul>
                 </nav>
             </div>
@@ -242,16 +245,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="text-muted">Table ZoneID</h5>
-                                    <div class="metric-value d-inline-block">
-                                        <h1 class="mb-1" id="tablezoneid"></h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="row">
@@ -261,7 +255,7 @@
                         <div class="card">
                             <h5 class="card-header">Map</h5>
                             <div class="card-body">
-                                <div id="map" style="height: 250px;"></div>
+                                <div id="map" Style="height:350px;"></div>
                             </div>
                         </div>
                     </div>
@@ -293,15 +287,6 @@
                         <!-- /.table end card-footer -->
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
 
             </section> <!-- right col -->
     </div>
@@ -339,88 +324,77 @@
     <script src="../dist/js/demo.js"></script>
     <script src="../dist/ol.js"></script>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-    <script src="../index.js"></script>
+
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="../dist/js/ajax.js"></script>
-    <script>
+ <script src="../dist/js/Extraxes.js"></script>
+ <script src="../dist/js/zonetable.js"></script>
+<script>
+           
+ $(document).ready(function() {
+ $('[data-toggle="tooltip"]').tooltip();
+var lng = [];
+var lat = [];
+var radius=[];
+var name=[];
+var username = "evioapi@evio.in";
+var password = "@dm1n3v10";
+	function make_base_auth(user, password) {
+  var tok = user + ':' + password;
+  var hash = btoa(tok);
+  return "Basic " + hash;
+	}
+		var tablezoneid;	
 
+	//Zone Table Onclick row count
+    var table = $('#zone').DataTable();
+    $('#zone tbody').on('click', 'tr', function () {
+        var data =table.row( this ).data() ;
+       // alert( 'You clicked on '+data.zoneId+'\'s row' );
+		tablezoneid = data.zoneId;
+	var url = 'https://evio.eztraxs.com/api/person-locations/'+tablezoneid;
+	console.log(url)
+$.ajax({
+	type: "GET",
+		url: url,
+//	url: 'http://eviothings.in:1880/eztraxes',
+	contentType: "application/json; charset=utf-8",
+	dataType: "json",
+	success: function (data) {
+		console.log(data.data);
+		for (i = 0; i < data.data.length; i++) {
+			//console.log(i+" "+data.zoneDetails[i].zoneName);
+			lng.push(data.data[i].location.lng);
+			lat.push(data.data[i].location.lat);
+		}
+		console.log(lat);
+		two(lng,lat,name);
+		//console.log(lng2);
+		document.getElementById("lng").innerHTML = lng;
+		document.getElementById("lat").innerHTML = lat;
+	}
+	,
+beforeSend: function (xhr) {
+xhr.setRequestHeader('Authorization', make_base_auth(username, password));
+}
+});
+    } );
+function two(lat,lng,name)
+{
+	console.log(name)
+this.lat=lat;
+this.lng=lng;
+var marker= [];
+L.marker([30, 30]).addTo(map);
+for (i = 0; i < lat.length; i++) {
+	marker[i] = L.marker([lng[i], lat[i]]).addTo(map);
+}
+}
+//marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+} );
 
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-
-        $(".toggle-expand-btn").click(function (e) {
-            $(this).closest('.card').toggleClass('panel-fullscreen');
-        });
-
-        function nav() {
-            var w = document.myform.mylist.selectedIndex;
-            var url_add = document.myform.mylist.options[w].value;
-            document.getElementById("location").innerHTML = url_add;
-        }
-
-        function nav1() {
-            var w = document.myform1.mylist.selectedIndex;
-            var url_add = document.myform1.mylist.options[w].value;
-            document.getElementById("location").innerHTML = url_add;
-        }
-
-
-        function confirmed() {
-        }
-        function Hospitalized() {
-        }
-        function Recovered() {
-        }
-        function Deceased() {
-        }
-        function Home_Quarantine() {
-        }
-        function Tested() {
-        }
-        function Scanned() {
-        }
-        function MF() {
-        }
-        var barChartCanvas = $('#bed').get(0).getContext('2d')
-
-        var barChartData = {
-            labels: ['27-04-2020', '28-04-2020', '29-04-2020', '30-04-2020', '01-05-2020'],
-            datasets: [
-                {
-                    label: 'Beds Available',
-                    backgroundColor: 'rgba(60,141,188,0.9)',
-                    borderColor: 'rgba(60,141,188,0.8)',
-                    data: [60, 56, 80, 64, 55]
-                },
-                {
-                    label: 'Beds Occupied',
-                    backgroundColor: 'rgba(210, 214, 222, 1)',
-                    borderColor: 'rgba(210, 214, 222, 1)',
-                    data: [40, 30, 58, 38, 40]
-                },
-            ]
-        }
-
-        var barChartOptions = {
-            maintainAspectRatio: false,
-            responsive: true,
-            legend: {
-                display: true
-            },
-            plugins: {
-                datalabels: {
-                    display: false
-                }
-            }
-        }
-
-        var barChart = new Chart(barChartCanvas, {
-            type: 'bar',
-            data: barChartData,
-            options: barChartOptions
-        })
     </script>
 </body>
 </html>
