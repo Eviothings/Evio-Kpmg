@@ -40,7 +40,6 @@ xhr.setRequestHeader('Authorization', make_base_auth(username, password));
 }
 });
 var map = L.map('map', { attributionControl: false }).setView([20.5937, 78.9629], 5);
-L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=EzYeYOL1fSlnjAO0FTCT').addTo(map);
 
 console.log(lat.length);
 function one(lat,lng,name,radius)
@@ -63,20 +62,6 @@ for (i = 0; i < lat.length; i++) {
 //bing
 var BING_KEY = 'AuhiCJHlGzhg93IqUH_oCpl_-ZUrIE6SPftlyGYUvr9Amx5nzA-WqGcPquyFZl4L'
 var bingRoadLayer = L.tileLayer.bing({ bingMapsKey: BING_KEY, imagerySet: 'Road' }).addTo(map)
-//var bingAerialLayer = L.tileLayer.bing({ bingMapsKey: BING_KEY, imagerySet: 'AerialWithLabels' }).addTo(map)
-/*
-//OverLayer Control		
-var baseMaps = {
-	'map' : map,
-	'bing-Road': bingRoadLayer
-	'bing-Aerial': bingAerialLayer
 
-};
-var overlayMaps = {
-
-};
-L.control.layers(baseMaps, overlayMaps).addTo(map);
-*/
-//add scale
 L.control.scale().addTo(map);
 }
