@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-	
-	  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-	 <!-- bing-->
-		 <script src="../dist/js/leaflet.js.download"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <!-- bing-->
+    <script src="../dist/js/leaflet.js.download"></script>
     <script src="../dist/js/polyfill.min.js.download"></script>
     <script src="../dist/js/leaflet-bing-layer.js.download"></script>
     <link href="../dist/js/leaflet.css" rel="stylesheet">
-	
+
     <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link rel="stylesheet" href="../plugins/jqvmap/jqvmap.min.css">
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.2.1/css/ol.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-	
+
     <style>
         #rcorners2 {
             border-radius: 10px;
@@ -151,7 +151,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                    with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview menu-close">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -204,7 +204,7 @@
                                 </li>
                             </ul>
                         </li>
-						<li class="nav-item has-treeview menu-close">
+                        <li class="nav-item has-treeview menu-close">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon far fa-plus-square"></i>
                                 <p>
@@ -218,8 +218,8 @@
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Geotagging</p>
                                     </a>
-                         </li>
-                              
+                                </li>
+
                             </ul>
                         </li>
 
@@ -308,7 +308,7 @@
                 </div>
 
             </section> <!-- right col -->
-    </div>
+        </div>
         <footer class="main-footer">
             <img class="col-md-3" src="../dist/img/binary.png" style="height:auto" data-toggle="tooltip" title="www.evio.in">
             <div class=" col-md-5 d-none d-sm-inline-block" Style="color:#c0c0c0">
@@ -346,73 +346,70 @@
 
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="../dist/js/ajax.js"></script>
- <script src="../dist/js/Extraxes.js"></script>
- <script src="../dist/js/zonetable.js"></script>
-<script>
-           
- $(document).ready(function() {
- $('[data-toggle="tooltip"]').tooltip();
-var lng = [];
-var lat = [];
-var radius=[];
-var name=[];
-var username = "evioapi@evio.in";
-var password = "@dm1n3v10";
-	function make_base_auth(user, password) {
-  var tok = user + ':' + password;
-  var hash = btoa(tok);
-  return "Basic " + hash;
-	}
-		var tablezoneid;	
+    <script src="../dist/js/Extraxes.js"></script>
+    <script src="../dist/js/zonetable.js"></script>
+    <script>
 
-	//Zone Table Onclick row count
-    var table = $('#zone').DataTable();
-    $('#zone tbody').on('click', 'tr', function () {
-        var data =table.row( this ).data() ;
-       // alert( 'You clicked on '+data.zoneId+'\'s row' );
-		tablezoneid = data.zoneId;
-	var url = 'https://evio.eztraxs.com/api/person-locations/'+tablezoneid;
-	console.log(url)
-$.ajax({
-	type: "GET",
-		url: url,
-//	url: 'http://eviothings.in:1880/eztraxes',
-	contentType: "application/json; charset=utf-8",
-	dataType: "json",
-	success: function (data) {
-		console.log(data.data);
-		for (i = 0; i < data.data.length; i++) {
-			//console.log(i+" "+data.zoneDetails[i].zoneName);
-			lng.push(data.data[i].location.lng);
-			lat.push(data.data[i].location.lat);
-		}
-		console.log(lat);
-		two(lng,lat,name);
-		//console.log(lng2);
-		document.getElementById("lng").innerHTML = lng;
-		document.getElementById("lat").innerHTML = lat;
-	}
-	,
-beforeSend: function (xhr) {
-xhr.setRequestHeader('Authorization', make_base_auth(username, password));
-}
-});
-    } );
-function two(lat,lng,name)
-{
-	console.log(name)
-this.lat=lat;
-this.lng=lng;
-var marker= [];
-L.marker([30, 30]).addTo(map);
-for (i = 0; i < lat.length; i++) {
-	marker[i] = L.marker([lng[i], lat[i]]).addTo(map);
-}
-}
-//marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
-} );
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            var lng = [];
+            var lat = [];
+            var radius = [];
+            var name = [];
+            var username = "evioapi@evio.in";
+            var password = "@dm1n3v10";
+            function make_base_auth(user, password) {
+                var tok = user + ':' + password;
+                var hash = btoa(tok);
+                return "Basic " + hash;
+            }
+            var tablezoneid;
+
+            //Zone Table Onclick row count
+            var table = $('#zone').DataTable();
+            $('#zone tbody').on('click', 'tr', function () {
+                var data = table.row(this).data();
+                // alert( 'You clicked on '+data.zoneId+'\'s row' );
+                tablezoneid = data.zoneId;
+                var url = 'https://evio.eztraxs.com/api/person-locations/' + tablezoneid;
+                console.log(url)
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    //	url: 'http://eviothings.in:1880/eztraxes',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data.data);
+                        for (i = 0; i < data.data.length; i++) {
+                            //console.log(i+" "+data.zoneDetails[i].zoneName);
+                            lng.push(data.data[i].location.lng);
+                            lat.push(data.data[i].location.lat);
+                        }
+                        console.log(lat);
+                        two(lng, lat, name);
+                        //console.log(lng2);
+                        document.getElementById("lng").innerHTML = lng;
+                        document.getElementById("lat").innerHTML = lat;
+                    }
+                    ,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', make_base_auth(username, password));
+                    }
+                });
+            });
+            function two(lat, lng, name) {
+                console.log(name)
+                this.lat = lat;
+                this.lng = lng;
+                var marker = [];
+                for (i = 0; i < lat.length; i++) {
+                    marker[i] = L.marker([lng[i], lat[i]]).addTo(map);
+                }
+            }
+        });
 
     </script>
 </body>
