@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html>
 <head>
@@ -249,19 +249,19 @@
                                 <li class="nav-item">
                                     <a href="./ccc.html" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>CCC-NICMR Baner</p>
+                                        <p>CCC</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="./dchc.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>DCHC-Sasoon Hospital</p>
+                                        <p>DCHC</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="./dhc.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>DHC-Bharti Hospital</p>
+                                        <p>DHC</p>
                                     </a>
                                 </li>
                             </ul>
@@ -299,9 +299,23 @@
                         <div class="col-sm-3">
                             <h1 class="m-0 text-dark" id="location">Pune</h1>
                         </div>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-                <!-- Small boxes (Stat box) -->
+
+                        <div class="col-sm-5">
+                            <form name="myform">
+                                <label>CCC</label>
+                                <select class="form-control select2" style="width: 100%;" name="mylist" onChange="nav()">
+                                    <option value="rakshak_nagar"  selected="selected">Rakshak Nagar Krida Sankul</option>
+                                    <option value="Dr_khedekar">Draupadabai Khedekar hospital, Bopodi</option>
+                                    <option value="dalvi_hos">Dr Dalvi Hospital</option>
+                                    <option value="NICMR">NICMR, Baner</option>
+                                    <option value="Laygude_hos">Laygude Hospital, Dhayari</option>
+                                    <option value="Singhgad">Singhgad Institute College Hostel, Vadgaon</option>
+                                    <option value="sanas_hostel">Sanas Ground Hostel</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-borderless text-center" style="border-spacing: 5px;   border-collapse: separate;">
                         <tr>
@@ -352,7 +366,7 @@
                             <div class="col-md-12">
                                 <div class="card card-danger">
                                     <div class="card-header" Style="background-color:#a233b0">
-                                        <h3 class="card-title">Beds Available Vs Beds Occupied *</h3>
+                                        <h3 class="card-title">Beds Available Vs Beds Occupied</h3>
 
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -386,7 +400,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="chart">
-                                            <canvas id="citywise" style="min-height: 250px; width: 100%; height: 250px; max-height: 100%; max-width: 100%;"></canvas>
+                                            <canvas id="testing" style="min-height: 250px; width: 100%; height: 250px; max-height: 100%; max-width: 100%;"></canvas>
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
@@ -411,7 +425,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="chart">
-                                            <canvas id="barChart2" style="min-height: 250px; height: 100%; max-height: 250px; max-width: 100%;"></canvas>
+                                            <canvas id="discharged" style="min-height: 250px; height: 100%; max-height: 250px; max-width: 100%;"></canvas>
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
@@ -468,7 +482,6 @@
     <script src="../dist/js/ajax.js"></script>
     <script>
 
-
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
@@ -480,14 +493,9 @@
         function nav() {
             var w = document.myform.mylist.selectedIndex;
             var url_add = document.myform.mylist.options[w].value;
-            document.getElementById("location").innerHTML = url_add;
+
         }
 
-        function nav1() {
-            var w = document.myform1.mylist.selectedIndex;
-            var url_add = document.myform1.mylist.options[w].value;
-            document.getElementById("location").innerHTML = url_add;
-        }
 
 
         function confirmed() {
@@ -506,23 +514,76 @@
         }
         function MF() {
         }
-        var barChartCanvas = $('#bed').get(0).getContext('2d')
+        var barChartCanvas = $('#bed').get(0).getContext('2d');
+        var testing = $('#testing').get(0).getContext('2d');
+        var discharged = $('#discharged').get(0).getContext('2d');
 
-        var barChartData = {
-            labels: ['27-04-2020', '28-04-2020', '29-04-2020', '30-04-2020', '01-05-2020'],
+        var testing_data = {
+            labels: ['30-Apr-20', '1- May-20', '2-May-20', '3-May-20', '4-May-20'],
             datasets: [
                 {
+                    label: 'Testing',
+                    backgroundColor: 'green',
+                    borderColor: 'green',
+                    data: [80, 82, 85, 75, 90]
+                },
+                {
+                    label: 'Positive',
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                    data: [25, 23, 20, 30, 15]
+                },
+
+            ]
+        }
+
+        var bed = {
+            labels: ['30-Apr-20', '1- May-20', '2-May-20', '3-May-20', '4-May-20'],
+            datasets: [
+                {
+                    label: 'Daily Cases',
+                    borderColor: 'red',
+                    data: [25, 23, 20, 30, 15],
+                    type: 'line'
+                },
+                {
                     label: 'Beds Available',
-                    backgroundColor: 'rgba(60,141,188,0.9)',
-                    borderColor: 'rgba(60,141,188,0.8)',
-                    data: [60, 56, 80, 64, 55]
+                    backgroundColor: 'yellow',
+                    borderColor: 'yellow',
+                    data: [75, 50, 27, 6, 23]
                 },
                 {
                     label: 'Beds Occupied',
-                    backgroundColor: 'rgba(210, 214, 222, 1)',
-                    borderColor: 'rgba(210, 214, 222, 1)',
-                    data: [40, 30, 58, 38, 40]
+                    backgroundColor: 'green',
+                    borderColor: 'green',
+                    data: [30, 55, 78, 99, 83]
                 },
+
+            ]
+        }
+
+        var discharged_data = {
+            labels: ['30-Apr-20', '1- May-20', '2-May-20', '3-May-20', '4-May-20'],
+            datasets: [
+                {
+                    label: 'Discharged',
+                    borderColor: 'green',
+                    data: [10, 07, 15, 08, 05],
+                    type: 'line'
+                },
+                {
+                    label: 'Quarantine without Alert',
+                    backgroundColor: 'orange',
+                    borderColor: 'orange',
+                    data: [60, 63, 55, 47, 62]
+                },
+                {
+                    label: 'Quarantine with Alert',
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                    data: [10, 12, 15, 20, 23]
+                }
+
             ]
         }
 
@@ -534,15 +595,69 @@
             },
             plugins: {
                 datalabels: {
-                    display: false
-                }
+                    display: true,
+                    align: 'center',
+                    anchor: 'center',
+                    color: 'black',
+
+                    font: {
+                        weight: 'bold'
+                    },
+                    borderRadius: 4,
+                },
+
             }
         }
 
         var barChart = new Chart(barChartCanvas, {
             type: 'bar',
-            data: barChartData,
+            data: bed,
             options: barChartOptions
+        })
+
+
+        var horizontalBarChart = new Chart(testing, {
+            type: 'horizontalBar',
+            data: testing_data,
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                scales: {
+                    xAxes: [{
+                        stacked: true,
+                    }],
+                    yAxes: [{
+                        stacked: true
+                    }]
+                },
+                legend: {
+                    display: true
+                },
+                plugins: {
+                    datalabels: {
+                        backgroundColor: function (context) {
+                            return context.dataset.backgroundColor;
+                        },
+                        display: true,
+                        align: 'center',
+                        anchor: 'center',
+                        color: 'black',
+
+                        font: {
+                            weight: 'bold'
+                        },
+                        borderRadius: 4,
+                    },
+
+                }
+            }
+        })
+
+        var horizontalBarChart = new Chart(discharged, {
+            type: 'bar',
+            data: discharged_data,
+            options: barChartOptions
+
         })
     </script>
 </body>

@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "Dedicated_COVID_Hospital",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "F1": 1.0, "SID": null, "Taluka": "Haveli", "y": 18.538851, "x": 73.727451, "F14": null, "Name_Addre": "Symbiosis University Hospital, Lavale", "Avila_Beds": "500", "Avial_ICU": "30", "Ventelator": "4", "Oxygen_Sup": "Yes", "Ambulane": "1", "Con_Person": "Dr. Vijay Natarajan", "Phone_No": "9822251686" }, "geometry": { "type": "Point", "coordinates": [ 73.727451, 18.538851 ] } },
+{ "type": "Feature", "properties": { "F1": 2.0, "SID": null, "Taluka": "Haveli", "y": 18.578276, "x": 73.804149, "F14": null, "Name_Addre": "DH-Pune", "Avila_Beds": "300", "Avial_ICU": "5", "Ventelator": "5", "Oxygen_Sup": "Yes", "Ambulane": "1", "Con_Person": "Dr. B N Kakne", "Phone_No": "9422013456" }, "geometry": { "type": "Point", "coordinates": [ 73.804149, 18.578276 ] } },
+{ "type": "Feature", "properties": { "F1": 3.0, "SID": null, "Taluka": "Baramati", "y": 18.14092, "x": 74.579682, "F14": null, "Name_Addre": "Baramati Hospital, Baramati", "Avila_Beds": "100", "Avial_ICU": "17", "Ventelator": "4", "Oxygen_Sup": "Yes", "Ambulane": "1", "Con_Person": "Dr. Londhe", "Phone_No": "9822047714" }, "geometry": { "type": "Point", "coordinates": [ 74.579682, 18.14092 ] } }
+]
+}
